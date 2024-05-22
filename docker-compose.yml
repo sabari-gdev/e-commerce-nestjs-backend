@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  db:
+    image: postgres
+    container_name: postgres-docker-container
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: PostgresAdmin
+      POSTGRES_PASSWORD: Admin2124
+    volumes:
+      - postgres-docker-volume:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4-docker-container
+    restart: always
+    ports:
+      - '8888:80'
+    environment:
+      PGADMIN_DEFAULT_EMAIL: contact.sabari.dev@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: Sabari2124#PGAdmin
+    volumes:
+      - pgadmin-docker-volume:/var/lib/pgadmin
+
+volumes:
+  postgres-docker-volume:
+  pgadmin-docker-volume:
